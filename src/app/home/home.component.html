@@ -1,0 +1,89 @@
+<div class="container">
+  <form
+    [formGroup]="signUpForm"
+    (ngSubmit)="signUpUser(signUpForm.value)"
+    class="signUpForm"
+    *ngIf="!display"
+  >
+    <h1>SignUp Form</h1>
+    <div class="name">
+      <label for="name">Name:</label>
+      <input
+        type="text"
+        name="name"
+        formControlName="name"
+        id="name"
+        placeholder="Enter Your Full Name"
+      />
+      <span *ngIf="control['name'].invalid && (control['name'].dirty || control['name'].touched)">Name is Required</span>
+    </div>
+    <div class="email">
+      <label for="email">Email:</label>
+      <input
+        type="text"
+        name="email"
+        formControlName="email"
+        id="email"
+        placeholder="Enter Your EmailId"
+      />
+      <span *ngIf="control['email'].invalid && (control['email'].dirty || control['email'].touched)"
+        >Email is Required</span
+      >
+    </div>
+    <div class="password">
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        name="password"
+        formControlName="password"
+        id="password"
+        placeholder="Enter Your Password"
+      />
+      <span *ngIf="control['password'].invalid && (control['password'].dirty || control['password'].touched)"
+        >Password is Required</span
+      >
+    </div>
+    <a (click)="login()">Already have an account? click here!</a>
+
+    <button>Sign Up</button>
+  </form>
+
+  <form
+    [formGroup]="loginForm"
+    (ngSubmit)="loginUser(loginForm.value)"
+    class="loginForm"
+    *ngIf="display"
+  >
+    <h1>Login Form</h1>
+    <p>{{ authError }}</p>
+    <div class="email">
+      <label for="email">Email:</label>
+      <input
+        type="text"
+        name="email"
+        formControlName="email"
+        id="email"
+        placeholder="Enter Your EmailId"
+      />
+      <span *ngIf="controls['email'].invalid && (controls['email'].dirty || controls['email'].touched)"
+        >Email is Required</span
+      >
+    </div>
+    <div class="password">
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        name="password"
+        formControlName="password"
+        id="password"
+        placeholder="Enter Your Password"
+      />
+      <span *ngIf="controls['password'].invalid && (controls['password'].dirty || controls['password'].touched)"
+        >Password is Required</span
+      >
+    </div>
+    <a (click)="signUp()">Already have an account? click here!</a>
+
+    <button>Login</button>
+  </form>
+</div>
